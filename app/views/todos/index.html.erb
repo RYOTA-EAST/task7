@@ -1,0 +1,10 @@
+<h1>
+  hello world
+</h1>
+
+<% @todos.each do |todo| %>
+  <h3>
+    <%= todo.name %>
+  </h3>
+  <%= todo.description %>
+<% end %>
