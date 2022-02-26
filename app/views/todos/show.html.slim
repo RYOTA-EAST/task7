@@ -1,0 +1,12 @@
+.container
+  h1
+    |詳細表示
+  table.table
+    thead 
+      tr 
+        th="名前"
+        th="説明文"
+    tbody 
+      tr 
+        td = @todo.name
+        td = @todo.description
