@@ -1,6 +1,9 @@
-h1
-  | hello world
+.container
+  h1
+    |一覧表示
 
-- @todos.each do |todo|
-  h3= todo.name
-  p= todo.description
+  - @todos.each do |todo|
+    .todo
+      h3= todo.name
+      p= todo.description
+      = link_to "詳細", todo_path(todo[:id])
