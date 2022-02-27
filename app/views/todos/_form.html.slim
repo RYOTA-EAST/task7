@@ -1,0 +1,8 @@
+= form_with url: path, model: todo, local: true do |form|
+  .mb-3
+    = form.label :name, class: "form-label"
+    = form.text_field :name, placeholder: "名前を入力してください。", class: "form-control"
+  .mb-3
+    = form.label :description, class: "form-label"
+    = form.text_area :description, placeholder: "説明文を入力してください。", class: "form-control"
+  = form.submit "投稿", class: "btn btn-primary"
