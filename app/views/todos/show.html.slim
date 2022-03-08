@@ -1,8 +1,13 @@
 .container
-  h1
-    |詳細表示
-  = link_to "編集", edit_todo_path, class: "btn btn-warning"
-  = button_to "削除", todo_path(@todo.id), method: :delete, class: "btn btn-danger"
+  .row
+    .col
+      h1
+        |詳細表示
+    .col.row
+      .col
+        = link_to "編集", edit_todo_path, class: "btn btn-warning"
+      .col
+        = button_to "削除", todo_path(@todo.id), method: :delete, class: "btn btn-danger"
   table.table
     thead 
       tr 

@@ -1,10 +1,20 @@
 .container
-  h1
-    |一覧表示
-  = link_to "新規作成", new_todo_path 
+  .row
+    .col
+      h1
+        |一覧表示
+    .col
+      = link_to "新規作成", new_todo_path, class: "btn btn-success"
 
-  - @todos.each do |todo|
-    .todo
-      h3= todo.name
-      p= todo.description
-      = link_to "詳細", todo_path(todo[:id])
+  .row 
+    - @todos.each do |todo|
+      .col-xl-6.mb-3
+        .todo.card.border-secondary
+          .card-header
+            .row
+              .me-3.col= todo.name
+              .col-4.text-center
+                = link_to "詳細", todo_path(todo[:id]), class:"btn btn-info btn-sm"
+          .card-body
+            .card-text= todo.description
+            
