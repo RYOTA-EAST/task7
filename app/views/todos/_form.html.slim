@@ -1,4 +1,5 @@
 = form_with url: path, model: todo, local: true do |form|
+  = render 'layouts/error_messages', model: form.object
   .mb-3
     = form.label :name, class: "form-label"
     = form.text_field :name, placeholder: "名前を入力してください。", class: "form-control"
