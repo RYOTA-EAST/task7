@@ -1,4 +1,5 @@
 class TodosController < ApplicationController
+  before_action :logged_in_user
   before_action :set_todo, only: %i(show edit update destroy)
   def index
     @todos = Todo.all.order(created_at: :desc)

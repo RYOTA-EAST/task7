@@ -78,3 +78,4 @@ end
 gem 'html2slim'
 gem 'slim'
 gem 'pry-rails'
+gem 'bcrypt'

@@ -1,4 +1,12 @@
 header.bg-secondary
   .container
-    h1.text-center.text-white
-      = link_to "Todo7", root_path, class: "text-white"
+    h1.text-center.text-white.
+      .row
+        .col
+          = link_to "Todo7", root_path, class: "text-white"
+        - if logged_in?
+          .col.row
+            .col.d-flex.align-items-center
+                h3.text-dark= current_user.name
+            .col
+              = button_to "logout", logout_path, method: :delete, class: "btn btn-danger"
