@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Todos", type: :system do
+RSpec.describe 'Todos', type: :system do
   before do
     driven_by(:rack_test)
   end
