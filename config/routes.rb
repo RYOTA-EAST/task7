@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  get '/signup', to: 'registrations#new'
+  post '/signup', to: 'registrations#create'
+
   root 'todos#index'
   resources :todos
 end
