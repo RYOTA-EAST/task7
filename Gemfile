@@ -75,6 +75,7 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'bcrypt'
 gem 'html2slim'
-gem 'slim'
 gem 'pry-rails'
+gem 'slim'

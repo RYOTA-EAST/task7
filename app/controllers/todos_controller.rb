@@ -1,7 +1,8 @@
 class TodosController < ApplicationController
+  before_action :logged_in_user
   before_action :set_todo, only: %i(show edit update destroy)
   def index
-    @todos = Todo.all.order(created_at: :desc)
+    @todos = Todo.where(user: current_user).order(created_at: :desc)
   end
 
   def show
@@ -42,7 +43,7 @@ class TodosController < ApplicationController
   private
 
   def todo_params
-    params.require(:todo).permit(:name, :description)
+    params.require(:todo).permit(:name, :description).merge(user_id: current_user.id)
   end
 
   def set_todo
