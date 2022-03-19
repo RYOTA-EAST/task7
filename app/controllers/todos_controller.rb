@@ -2,7 +2,7 @@ class TodosController < ApplicationController
   before_action :logged_in_user
   before_action :set_todo, only: %i(show edit update destroy)
   def index
-    @todos = Todo.where(user: current_user).order(created_at: :desc)
+    @todos = Todo.where(user: current_user).order(deadline: :asc)
   end
 
   def show
