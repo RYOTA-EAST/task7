@@ -43,7 +43,7 @@ class TodosController < ApplicationController
   private
 
   def todo_params
-    params.require(:todo).permit(:name, :description).merge(user_id: current_user.id)
+    params.require(:todo).permit(:name, :description, :deadline, :status_id, :priority_id).merge(user_id: current_user.id)
   end
 
   def set_todo

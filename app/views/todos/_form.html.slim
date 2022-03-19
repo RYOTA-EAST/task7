@@ -6,4 +6,14 @@
   .mb-3
     = form.label :description, class: "form-label"
     = form.text_area :description, placeholder: "説明文を入力してください。", class: "form-control"
+
+  .mb-3
+    = form.label :status, class: "form-label"
+    = form.collection_select(:status_id, Status.all, :id, :name, class: "form-control")
+  .mb-3
+    = form.label :priority, class: "form-label"
+    = form.collection_select(:priority_id, Priority.all, :id, :name, class: "form-control")
+  .mb-3
+    = form.label :deadline, class: "form-label"
+    = form.datetime_field :deadline, class: 'form-control'
   = form.submit "投稿", class: "btn btn-primary"

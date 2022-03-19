@@ -13,7 +13,13 @@
       tr 
         th="名前"
         th="説明文"
+        th="進捗"
+        th="優先度"
+        th="期限"
     tbody 
       tr 
         td = @todo.name
         td = @todo.description
+        td = @todo.status.name
+        td = @todo.priority.name
+        td = @todo.deadline
