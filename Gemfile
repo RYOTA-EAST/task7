@@ -79,3 +79,5 @@ gem 'bcrypt'
 gem 'html2slim'
 gem 'pry-rails'
 gem 'slim'
+
+gem 'active_hash'

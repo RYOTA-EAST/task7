@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   post '/signup', to: 'registrations#create'
 
   root 'todos#index'
-  resources :todos
+  resources :todos do
+    collection do
+      get 'search'
+    end
+  end
 end

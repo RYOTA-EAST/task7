@@ -2,7 +2,7 @@ class TodosController < ApplicationController
   before_action :logged_in_user
   before_action :set_todo, only: %i(show edit update destroy)
   def index
-    @todos = Todo.where(user: current_user).order(created_at: :desc)
+    @todos = Todo.where(user: current_user).order(deadline: :asc)
   end
 
   def show
@@ -40,10 +40,18 @@ class TodosController < ApplicationController
     end
   end
 
+  def search
+    @todos = Todo.where(user: current_user)
+    @todos = @todos.where('name LIKE ?', "%#{params[:name]}%") unless params[:name].nil?
+    @todos = @todos.where(status_id: params[:status_id]) unless params[:status_id] == '1'
+    @todos = @todos.where(priority_id: params[:priority_id]) unless params[:priority_id] == '1'
+    render :index
+  end
+
   private
 
   def todo_params
-    params.require(:todo).permit(:name, :description).merge(user_id: current_user.id)
+    params.require(:todo).permit(:name, :description, :deadline, :status_id, :priority_id).merge(user_id: current_user.id)
   end
 
   def set_todo
