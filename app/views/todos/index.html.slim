@@ -5,6 +5,20 @@
         |一覧表示
     .col
       = link_to "新規作成", new_todo_path, class: "btn btn-success"
+    .col-xl-6.bg-dark.p-2.text-white.mb-3
+      = form_with url: search_todos_path, local: true, method: :get do |form|
+        .row
+          .col.d-flex.align-items-center.justify-content-center
+            = form.label :name, class: "form-label"
+            = form.text_field :name
+          .col-2.d-flex.align-items-center.justify-content-center
+            = form.label :status, class: "form-label"
+            = form.collection_select(:status_id, Status.all, :id, :name, class: "form-control")
+          .col-2.d-flex.align-items-center.justify-content-center
+            = form.label :priority, class: "form-label"
+            = form.collection_select(:priority_id, Priority.all, :id, :name, class: "form-control")
+          .col-2.d-flex.align-items-center.justify-content-center
+            = form.submit "検索", class: "btn btn-info"
 
   .row 
     - @todos.each do |todo|
@@ -13,19 +27,32 @@
           .card-header
             .row
 
-              .me-3.col
+              .me-2.col-3
                 - case todo.status_id 
                 - when 2
                   .badge.bg-danger.me-3
                     = todo.status.name
                 - when 3
-                  .badge.bg-warning.me-3
+                  .badge.bg-warning.text-dark.me-3
                     = todo.status.name
                 - when 4
                   .badge.bg-success.me-3
                     = todo.status.name
 
+                - case todo.priority_id 
+                - when 2
+                  .badge.bg-danger
+                    = todo.priority.name
+                - when 3
+                  .badge.bg-warning.text-dark
+                    = todo.priority.name
+                - when 4
+                  .badge.bg-success
+                    = todo.priority.name
+
+              .col
                 strong= todo.name
+
               .col-4.text-center
                 = link_to "詳細", todo_path(todo[:id]), class:"btn btn-info btn-sm"
           .card-body

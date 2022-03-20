@@ -40,6 +40,14 @@ class TodosController < ApplicationController
     end
   end
 
+  def search
+    @todos = Todo.where(user: current_user)
+    @todos = @todos.where('name LIKE ?', "%#{params[:name]}%") unless params[:name].nil?
+    @todos = @todos.where(status_id: params[:status_id]) unless params[:status_id] == '1'
+    @todos = @todos.where(priority_id: params[:priority_id]) unless params[:priority_id] == '1'
+    render :index
+  end
+
   private
 
   def todo_params
