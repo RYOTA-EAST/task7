@@ -81,3 +81,4 @@ gem 'pry-rails'
 gem 'slim'
 
 gem 'active_hash'
+gem 'rails-i18n'
